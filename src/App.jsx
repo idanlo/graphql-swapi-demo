@@ -1,10 +1,3 @@
-import React from 'react';
-import './App.css';
+import Layout from './modules/layout/Layout';
 
-const App = () => (
-    <div>
-        <h1>hello world</h1>
-    </div>
-);
-
-export default App;
+export default Layout;
