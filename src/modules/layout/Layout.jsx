@@ -1,13 +1,19 @@
 import React from 'react';
 import { Layout as AntLayout, Menu, Icon } from 'antd';
-import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import { withRouter, Switch, Route, Redirect, Link } from 'react-router-dom';
 import styles from './Layout.module.css';
 import Movies from '../movies/Movies';
 import Characters from '../characters/Characters';
 
 const { Content, Footer, Sider } = AntLayout;
 
-function Layout() {
+const mapPathnameToKey = {
+  '/movies': '1',
+  '/characters': '2'
+};
+
+function Layout(props) {
+  const { location } = props;
   return (
     <AntLayout className={styles.Layout}>
       <Sider
@@ -21,7 +27,11 @@ function Layout() {
         }}
       >
         <div className="logo" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={[mapPathnameToKey[location.pathname]]}
+        >
           <Menu.Item key="1">
             <Icon type="user" />
             <span className="nav-text">Movies</span>
@@ -59,4 +69,4 @@ function Layout() {
   );
 }
 
-export default Layout;
+export default withRouter(Layout);
