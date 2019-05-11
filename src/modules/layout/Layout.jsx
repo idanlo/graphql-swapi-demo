@@ -1,8 +1,9 @@
 import React from 'react';
 import { Layout as AntLayout, Menu, Icon } from 'antd';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import styles from './Layout.module.css';
 import Movies from '../movies/Movies';
+import Characters from '../characters/Characters';
 
 const { Content, Footer, Sider } = AntLayout;
 
@@ -20,22 +21,16 @@ function Layout() {
         }}
       >
         <div className="logo" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
           <Menu.Item key="1">
             <Icon type="user" />
-            <span className="nav-text">nav 1</span>
+            <span className="nav-text">Movies</span>
+            <Link to="/movies" />
           </Menu.Item>
           <Menu.Item key="2">
             <Icon type="video-camera" />
-            <span className="nav-text">nav 2</span>
-          </Menu.Item>
-          <Menu.Item key="3">
-            <Icon type="upload" />
-            <span className="nav-text">nav 3</span>
-          </Menu.Item>
-          <Menu.Item key="4">
-            <Icon type="user" />
-            <span className="nav-text">nav 4</span>
+            <span className="nav-text">Characters</span>
+            <Link to="/characters" />
           </Menu.Item>
         </Menu>
       </Sider>
@@ -44,6 +39,7 @@ function Layout() {
           <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
             <Switch>
               <Route path="/movies" exact component={Movies} />
+              <Route path="/characters" exact component={Characters} />
               <Redirect from="/" to="/movies" />
             </Switch>
           </div>
