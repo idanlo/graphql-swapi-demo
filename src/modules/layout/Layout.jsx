@@ -1,6 +1,8 @@
 import React from 'react';
 import { Layout as AntLayout, Menu, Icon } from 'antd';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import styles from './Layout.module.css';
+import Movies from '../movies/Movies';
 
 const { Content, Footer, Sider } = AntLayout;
 
@@ -40,7 +42,10 @@ function Layout() {
       <AntLayout>
         <Content style={{ margin: '24px 16px 0' }}>
           <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-            content
+            <Switch>
+              <Route path="/movies" exact component={Movies} />
+              <Redirect from="/" to="/movies" />
+            </Switch>
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
