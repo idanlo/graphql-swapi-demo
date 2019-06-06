@@ -1,6 +1,7 @@
 import React from 'react';
 import { Layout as AntLayout, Menu, Icon } from 'antd';
 import { withRouter, Switch, Route, Redirect, Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import styles from './Layout.module.css';
 import Movies from '../movies/Movies';
 import Characters from '../characters/Characters';
@@ -13,6 +14,8 @@ const mapPathnameToKey = {
 };
 
 function Layout(props) {
+  useTitle(props.location.pathname);
+
   const { location } = props;
   return (
     <AntLayout className={styles.Layout}>
