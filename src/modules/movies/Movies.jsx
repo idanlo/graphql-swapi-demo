@@ -1,6 +1,6 @@
 import React from 'react';
-import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import Query from '../../components/Query';
 
 const GET_ALL_FILMS = gql`
   query {
@@ -15,19 +15,12 @@ const GET_ALL_FILMS = gql`
 function Movies() {
   return (
     <div>
-      <Query query={GET_ALL_FILMS}>
-        {({ data, loading, error }) => {
-          if (loading) return <h1>Loading...</h1>;
-          if (error) return <h1>Error!</h1>;
-
-          if (data) {
-            console.log(data);
-            return data.allFilms.map(film => (
-              <h1 key={film.title}>{film.title}</h1>
-            ));
-          }
-        }}
-      </Query>
+      <Query
+        query={GET_ALL_FILMS}
+        render={data =>
+          data.allFilms.map(film => <h1 key={film.title}>{film.title}</h1>)
+        }
+      />
     </div>
   );
 }
