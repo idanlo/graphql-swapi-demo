@@ -39,7 +39,7 @@ function Characters() {
               <Col key={char.node.id} xs={24} md={12} lg={8} xl={4}>
                 <Card
                   title={char.node.name}
-                  style={{ height: 225, margin: '5px 0' }}
+                  style={{ minHeight: 250, margin: '5px 0' }}
                 >
                   <span>
                     <Divider style={{ margin: '2px 0' }}>
