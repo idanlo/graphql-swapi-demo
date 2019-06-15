@@ -12,7 +12,7 @@ import * as serviceWorker from './serviceWorker';
 // Create connection to the graphql server
 const cache = new InMemoryCache();
 const link = new HttpLink({
-  uri: 'https://graphql.github.io/swapi-graphql/'
+  uri: 'https://graphql.org/swapi-graphql/'
 });
 
 const client = new ApolloClient({
